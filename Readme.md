@@ -14,7 +14,7 @@ This will:
 
 ![network traffic diagram](diagram.svg)
 
-The isolated service receives network traffic via an intermediate nginx server named `whoami-proxy`.
+The isolated service receives network traffic via an intermediate Nginx server named `whoami-proxy`.
 `whoami-proxy` straddles the Traefik-aware `web` network and the [externally isolated](https://docs.docker.com/reference/compose-file/networks/#internal) `private` network.
 
 The service cannot send traffic beyond `private`.
@@ -77,11 +77,20 @@ Why?
 Why Traefik?
 : Just happens to be something I'm familiar with.
 
-Why nginx?
+Why Nginx?
 : It's a popular reverse proxy and it looked easy to set up. It was.
 
 Why not iptables?
 : Looks hard. I'm not super confident with it.
+
+What about web sockets?
+: I don't know. Maybe that'll work as-is, or with a few more lines of Nginx config?
+
+What about HTTPS?
+: I was assuming Traefik would terminate HTTPS traffic, so Nginx and the isolated service shouldn't need to handle that.
+
+How do I get real client IP addresses?
+: I don't know. Should be doable with the right headers.
 
 ## Copyright and license
 
