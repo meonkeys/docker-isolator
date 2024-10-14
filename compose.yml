@@ -1,0 +1,51 @@
+services:
+  # highly trusted / might be exposed on WAN / etc.
+  main-rproxy:
+    image: traefik:v3.1
+    command:
+      - --accesslog=true
+      - --log.level=INFO
+      - --providers.docker
+      - --providers.docker.network=web
+      - --providers.docker.exposedbydefault=false
+      - --global.checknewversion=false
+      - --global.sendanonymoususage=false
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - web
+
+  # trustworthy internal / 2nd proxy
+  whoami-proxy:
+    image: nginx
+    labels:
+      traefik.enable: true
+      traefik.http.routers.whoami.rule: Host(`whoami.docker.localhost`)
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - web
+      - private
+
+  # untrusted service we are isolating
+  whoami:
+    image: traefik/whoami
+    user: 1000:1000
+    networks:
+      - private
+
+  # companion/sidecar to the untrusted service
+  jailed-worker:
+    image: nicolaka/netshoot
+    command: sleep 6000
+    networks:
+      - private
+
+networks:
+  web:
+    name: web
+  private:
+    name: private
+    internal: true
