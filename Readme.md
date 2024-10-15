@@ -16,19 +16,19 @@ These attempts cannot be run simultaneously.
 
 The simplest solution is to avoid the Traefik [docker provider](https://doc.traefik.io/traefik/providers/docker/) and use the [file provider](https://doc.traefik.io/traefik/providers/file/) instead.
 
-See `attempt-01/Readme.md`.
+See [attempt-01/Readme](attempt-01/Readme.md).
 
 ## ✅ Attempt 2: docker provider, intermediate proxy
 
 This works and has different characteristics than Attempt 1.
 
-See `attempt-02/Readme.md`.
+See [attempt-02/Readme.md](attempt-02/Readme.md).
 
 ## ❌ Attempt 3: docker provider, no intermediate proxy
 
 This doesn't appear to work.
 
-See `attempt-03/Readme.md`.
+See [attempt-03/Readme.md](attempt-03/Readme.md).
 
 ## Clean up
 
