@@ -32,8 +32,8 @@ See `attempt-03/Readme.md`.
 
 ## Clean up
 
-<kbd>Ctrl</kbd>-<kbd>c</kbd> will stop the containers.
-Another `docker compose down` seems to be required to clean up additional resources (stopped containers, custom bridge networks).
+<kbd>Ctrl</kbd>+<kbd>c</kbd> will stop the containers.
+Another `docker compose down` seems to be required to clean up everything (stopped containers, custom bridge networks).
 
 ## Experiment further
 
