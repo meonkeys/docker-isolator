@@ -1,5 +1,4 @@
 services:
-  # highly trusted / might be exposed on WAN / etc.
   main-rproxy:
     image: traefik:v3.1
     ports:
@@ -11,13 +10,11 @@ services:
       - web
       - private
 
-  # untrusted service we are isolating
   whoami:
     image: traefik/whoami
     networks:
       - private
 
-  # companion/sidecar to the untrusted service
   jailed-worker:
     image: nicolaka/netshoot
     command: sleep 6000
