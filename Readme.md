@@ -13,25 +13,25 @@ Goals:
 
 These attempts cannot be run simultaneously.
 
-## ✅ Attempt 1: file provider, no intermediate proxy
+## ✅ Attempt 1: Traefik, file provider, no intermediate proxy
 
-The simplest solution is to avoid the Traefik [docker provider](https://doc.traefik.io/traefik/providers/docker/) and use the [file provider](https://doc.traefik.io/traefik/providers/file/) instead.
+This solution avoids the Traefik [docker provider](https://doc.traefik.io/traefik/providers/docker/), in favor of its [file provider](https://doc.traefik.io/traefik/providers/file/).
 
 See [attempt-01/Readme](attempt-01/Readme.md).
 
-## ✅ Attempt 2: docker provider, intermediate proxy
+## ✅ Attempt 2: Traefik, docker provider, intermediate proxy
 
 This works and has different characteristics than Attempt 1.
 
 See [attempt-02/Readme.md](attempt-02/Readme.md).
 
-## ❌ Attempt 3: docker provider, no intermediate proxy
+## ❌ Attempt 3: Traefik, docker provider, no intermediate proxy
 
-This doesn't appear to work.
+Traefik won't start.
 
 See [attempt-03/Readme.md](attempt-03/Readme.md).
 
-## ✅ Attempt 4: Caddy in front, no intermediate proxy
+## ✅ Attempt 4: Caddy, no intermediate proxy
 
 Same as Attempt 1, using Caddy instead of Traefik.
 Easier config than Traefik.
@@ -104,6 +104,8 @@ ping adammonsen.com
   <dd>I don’t know. Should be doable with the right headers.</dd>
 <dt>What about not running as root?</dt>
   <dd>Yep, good idea. You might want <a href="https://docs.docker.com/engine/security/userns-remap/">user namespaces</a>. You could also add your own <code>user: UID:GID</code> config lines to the <code>compose.yml</code> files I provided.</dd>
+<dt>Which is your favorite?</dt>
+  <dd>Attempt 4.</dd>
 </dl>
 
 ## Copyright and license
