@@ -89,29 +89,21 @@ ping adammonsen.com
 
 <dl>
 <dt>Why?</dt>
-<dd>I wanted a way to block outbound traffic from containers without modifying images and without having to work with iptables.
-</dd>
+  <dd>I wanted a way to block outbound traffic from containers without modifying images and without having to work with iptables.</dd>
 <dt>Why Traefik?</dt>
-<dd>Just happens to be something I’m familiar with.
-</dd>
+  <dd>Just happens to be something I’m familiar with.</dd>
 <dt>Why Nginx?</dt>
-<dd>It’s a popular reverse proxy and it looked easy to set up. It was.
-</dd>
+  <dd>It’s a popular reverse proxy and it looked easy to set up. It was.</dd>
 <dt>Why not iptables?</dt>
-<dd>Looks hard. I’m not super confident with it.
-</dd>
+  <dd>Looks hard. I’m not super confident with it.</dd>
 <dt>What about web sockets?</dt>
-<dd>I don’t know. Maybe that’ll work as-is, or with a few more lines of Nginx config?
-</dd>
+  <dd>I don’t know. Maybe that’ll work as-is, or with a few more lines of Nginx config?</dd>
 <dt>What about HTTPS?</dt>
-<dd>In a for-reals homelab/homeprod, <code>main-rproxy</code> would terminate HTTPS traffic, so Nginx (if used) and the isolated service shouldn’t need to handle it directly.
-</dd>
+  <dd>In a for-reals homelab/homeprod, <code>main-rproxy</code> would terminate HTTPS traffic, so Nginx (if used) and the isolated service shouldn’t need to handle it directly.</dd>
 <dt>How do I get real client IP addresses with multiple reverse proxies?</dt>
-<dd>I don’t know. Should be doable with the right headers.
-</dd>
+  <dd>I don’t know. Should be doable with the right headers.</dd>
 <dt>What about not running as root?</dt>
-<dd>Yep, good idea. You might want <a href="https://docs.docker.com/engine/security/userns-remap/">user namespaces</a>. You could also add your own <code>user: UID:GID</code> config lines to the <code>compose.yml</code> files I provided.
-</dd>
+  <dd>Yep, good idea. You might want <a href="https://docs.docker.com/engine/security/userns-remap/">user namespaces</a>. You could also add your own <code>user: UID:GID</code> config lines to the <code>compose.yml</code> files I provided.</dd>
 </dl>
 
 ## Copyright and license
