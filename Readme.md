@@ -7,6 +7,7 @@ Goals:
 * Stand up a `whoami` service.
 * Allow proxied access to the service.
 * Block all outbound access from the service.
+* Do all of the above without customizing upstream images and without messing with iptables.
 
 `whoami` is a stand-in for any service that doesn't need outbound (e.g. Internet) access.
 
@@ -76,29 +77,32 @@ ping adammonsen.com
 
 ## FAQ
 
-Why?
-: I wanted a way to block outbound traffic from containers without modifying images and without having to work with iptables.
-
-Why Traefik?
-: Just happens to be something I'm familiar with.
-
-Why Nginx?
-: It's a popular reverse proxy and it looked easy to set up. It was.
-
-Why not iptables?
-: Looks hard. I'm not super confident with it.
-
-What about web sockets?
-: I don't know. Maybe that'll work as-is, or with a few more lines of Nginx config?
-
-What about HTTPS?
-: I was assuming Traefik would terminate HTTPS traffic, so Nginx and the isolated service shouldn't need to handle that.
-
-How do I get real client IP addresses with multiple reverse proxies?
-: I don't know. Should be doable with the right headers.
-
-What about not running as root?
-: Yep, good idea. See <https://docs.docker.com/engine/security/userns-remap/> or add your own `user: UID:GID` config lines.
+<dl>
+<dt>Why?</dt>
+<dd>I wanted a way to block outbound traffic from containers without modifying images and without having to work with iptables.
+</dd>
+<dt>Why Traefik?</dt>
+<dd>Just happens to be something I’m familiar with.
+</dd>
+<dt>Why Nginx?</dt>
+<dd>It’s a popular reverse proxy and it looked easy to set up. It was.
+</dd>
+<dt>Why not iptables?</dt>
+<dd>Looks hard. I’m not super confident with it.
+</dd>
+<dt>What about web sockets?</dt>
+<dd>I don’t know. Maybe that’ll work as-is, or with a few more lines of Nginx config?
+</dd>
+<dt>What about HTTPS?</dt>
+<dd>I was assuming Traefik would terminate HTTPS traffic, so Nginx and the isolated service shouldn’t need to handle that.
+</dd>
+<dt>How do I get real client IP addresses with multiple reverse proxies?</dt>
+<dd>I don’t know. Should be doable with the right headers.
+</dd>
+<dt>What about not running as root?</dt>
+<dd>Yep, good idea. You might want <a href="https://docs.docker.com/engine/security/userns-remap/">user namespaces</a>. You could also add your own <code>user: UID:GID</code> config lines to the <code>compose.yml</code> files I provided.
+</dd>
+</dl>
 
 ## Copyright and license
 
