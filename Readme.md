@@ -97,6 +97,9 @@ What about HTTPS?
 How do I get real client IP addresses with multiple reverse proxies?
 : I don't know. Should be doable with the right headers.
 
+What about not running as root?
+: Yep, good idea. See <https://docs.docker.com/engine/security/userns-remap/> or add your own `user: UID:GID` config lines.
+
 ## Copyright and license
 
 This demonstration is (C)2024 Adam Monsen.
