@@ -91,7 +91,7 @@ ping adammonsen.com
 <dt>Why?</dt>
   <dd>I wanted a way to block outbound traffic from containers without modifying images and without having to work with iptables.</dd>
 <dt>Why Traefik?</dt>
-  <dd>Just happens to be something I’m familiar with.</dd>
+  <dd>Just happens to be something I’m familiar with. Attempt 4 uses Caddy, and there are many others you could use.</dd>
 <dt>Why Nginx?</dt>
   <dd>It’s a popular reverse proxy and it looked easy to set up. It was.</dd>
 <dt>Why not iptables?</dt>
