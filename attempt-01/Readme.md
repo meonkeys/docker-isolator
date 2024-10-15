@@ -1,6 +1,6 @@
 # ✅ Attempt 1
 
-Isolation without the 2nd reverse proxy used in Attempt 3.
+Isolation without the 2nd reverse proxy used in Attempt 2.
 
 Must use Traefik file provider.
 

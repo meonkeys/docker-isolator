@@ -1,8 +1,8 @@
-# Docker service isolation demo
+# Docker service isolation demos
 
-Demonstrates web service network isolation using only Docker Compose.
+Demonstrate different approaches to web service network isolation using only Docker Compose.
 
-This will:
+Goals:
 
 * Stand up a `whoami` service.
 * Allow proxied access to the service.
@@ -10,31 +10,37 @@ This will:
 
 `whoami` is a stand-in for any service that doesn't need outbound (e.g. Internet) access.
 
-These attempts cannot be running simultaneously.
+These attempts cannot be run simultaneously.
 
 ## ✅ Attempt 1: file provider, no intermediate proxy
 
-The simplest solution is to _avoid the docker provider_ and use the file provider instead.
+The simplest solution is to avoid the Traefik [docker provider](https://doc.traefik.io/traefik/providers/docker/) and use the [file provider](https://doc.traefik.io/traefik/providers/file/) instead.
 
 See `attempt-01/Readme.md`.
 
-## ❌ Attempt 2: docker provider, no intermediate proxy
+## ✅ Attempt 2: docker provider, intermediate proxy
 
-This doesn't appear to work.
+This works and has different characteristics than Attempt 1.
 
 See `attempt-02/Readme.md`.
 
-## ✅ Attempt 3: docker provider, intermediate proxy
+## ❌ Attempt 3: docker provider, no intermediate proxy
 
-This works and has different characteristics than Attempt 1.
+This doesn't appear to work.
 
 See `attempt-03/Readme.md`.
 
 ## Experiment further
 
+Here are some additional things to try once you have a working attempt running.
+
+### Traefik dashboard
+
 See the Traefik dashboard on the host at <http://localhost:8080>.
 
-To test network activity within the `private` (isolated) network, run
+### ping tests
+
+To test network access from within the `private` (isolated) network, run
 
 ```bash
 docker compose exec jailed-worker bash
@@ -81,7 +87,7 @@ What about web sockets?
 What about HTTPS?
 : I was assuming Traefik would terminate HTTPS traffic, so Nginx and the isolated service shouldn't need to handle that.
 
-How do I get real client IP addresses?
+How do I get real client IP addresses with multiple reverse proxies?
 : I don't know. Should be doable with the right headers.
 
 ## Copyright and license
