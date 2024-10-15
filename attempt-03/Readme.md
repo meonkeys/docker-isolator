@@ -1,4 +1,4 @@
-# ❌ Attempt 2
+# ❌ Attempt 3
 
 Use Docker provider and labels for configuration, but don't use an intermediate reverse proxy.
 
