@@ -30,6 +30,11 @@ This doesn't appear to work.
 
 See `attempt-03/Readme.md`.
 
+## Clean up
+
+<kbd>Ctrl</kbd>-<kbd>c</kbd> will stop the containers.
+Another `docker compose down` seems to be required to clean up additional resources (stopped containers, custom bridge networks).
+
 ## Experiment further
 
 Here are some additional things to try once you have a working attempt running.
@@ -66,6 +71,8 @@ ping adammonsen.com
 * [Preventing egress / outbound traffic from container, except via sidecar gateway/proxy - Nomad - HashiCorp Discuss](https://discuss.hashicorp.com/t/preventing-egress-outbound-traffic-from-container-except-via-sidecar-gateway-proxy/56488)
 * [linux - Docker: Restricting inbound and outbound traffic using iptables - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/628827/docker-restricting-inbound-and-outbound-traffic-using-iptables)
 * [Restrict Internet Access - Docker Container - Stack Overflow](https://stackoverflow.com/questions/39913757/restrict-internet-access-docker-container)
+* [Docker Compose networking](https://docs.docker.com/compose/how-tos/networking/)
+* [Docker Compose top-level networks reference](https://docs.docker.com/reference/compose-file/networks/)
 
 ## FAQ
 
