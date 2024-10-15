@@ -10,37 +10,29 @@ This will:
 
 `whoami` is a stand-in for any service that doesn't need outbound (e.g. Internet) access.
 
-## Description
+These attempts cannot be running simultaneously.
 
-![network traffic diagram](diagram.svg)
+## ✅ Attempt 1: file provider, no intermediate proxy
 
-The isolated service receives network traffic via an intermediate Nginx server named `whoami-proxy`.
-`whoami-proxy` straddles the Traefik-aware `web` network and the [externally isolated](https://docs.docker.com/reference/compose-file/networks/#internal) `private` network.
+The simplest solution is to _avoid the docker provider_ and use the file provider instead.
 
-The service cannot send traffic beyond `private`.
+See `attempt-01/Readme.md`.
 
-## Walkthrough
+## ❌ Attempt 2: docker provider, no intermediate proxy
 
-To test this, start up everything and tail logs with
+This doesn't appear to work.
 
-```bash
-docker compose up
-```
+See `attempt-02/Readme.md`.
 
-This starts up four containers.
+## ✅ Attempt 3: docker provider, intermediate proxy
 
-1. `main-rproxy` - Traefik. Highly trusted, kept up to date, etc. Imagine this service exposed on a WAN (via a router port-forwarding to it). Excludes HTTPS for simplicity. [Source](https://github.com/traefik/traefik/).
-1. `whoami-proxy` - Nginx. A trustworthy internal / 2nd proxy for isolating the `whoami` service, our stand-in for an untrusted or less-trustworthy service. Gatekeeper straddling the `web` and `private` networks. [Source](https://github.com/nginxinc/docker-nginx).
-1. `whoami` - Simulated untrusted or less-trustworthy service. [Source](https://github.com/traefik/whoami).
-1. `jailed-worker` - Simulated companion/sidecar to the untrusted or less-trustworthy service. Exists to provide a network sandbox for testing because `whoami` is a refreshingly minimal image (without even a shell). [Source](https://github.com/nicolaka/netshoot).
+This works and has different characteristics than Attempt 1.
 
-In a separate terminal, try:
-
-```bash
-curl -v http://whoami.docker.localhost
-```
+See `attempt-03/Readme.md`.
 
 ## Experiment further
+
+See the Traefik dashboard on the host at <http://localhost:8080>.
 
 To test network activity within the `private` (isolated) network, run
 

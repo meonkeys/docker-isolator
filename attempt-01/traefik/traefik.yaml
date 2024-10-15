@@ -1,0 +1,15 @@
+global:
+  checknewversion: false
+  sendanonymoususage: false
+log:
+  level: INFO
+accesslog: true
+api:
+  insecure: true
+providers:
+  file:
+    filename: /etc/traefik/dynamic-config.yaml
+    watch: true
+entrypoints:
+  web:
+    address: :80

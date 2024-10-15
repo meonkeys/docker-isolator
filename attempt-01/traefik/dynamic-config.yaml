@@ -1,0 +1,12 @@
+http:
+  routers:
+    whoami:
+      entrypoints:
+        - web
+      service: whoami
+      rule: Host(`whoami.docker.localhost`)
+  services:
+    whoami:
+      loadbalancer:
+        servers:
+          - url: http://whoami:80

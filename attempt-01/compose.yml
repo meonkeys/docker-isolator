@@ -1,0 +1,35 @@
+services:
+  # highly trusted / might be exposed on WAN / etc.
+  main-rproxy:
+    image: traefik:v3.1
+    ports:
+      - 80:80
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik:/etc/traefik:ro
+    networks:
+      - web
+      - private
+
+  # untrusted service we are isolating
+  whoami:
+    image: traefik/whoami
+    user: 1000:1000
+    networks:
+      - private
+
+  # companion/sidecar to the untrusted service
+  jailed-worker:
+    image: nicolaka/netshoot
+    user: 1000:1000
+    command: sleep 6000
+    networks:
+      - private
+
+networks:
+  web:
+    name: web
+  private:
+    name: private
+    internal: true
