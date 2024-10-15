@@ -22,6 +22,7 @@ services:
   jailed-worker:
     image: nicolaka/netshoot
     command: sleep 6000
+    init: true
     networks:
       - private
 
