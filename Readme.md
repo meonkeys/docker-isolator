@@ -31,6 +31,13 @@ This doesn't appear to work.
 
 See [attempt-03/Readme.md](attempt-03/Readme.md).
 
+## ✅ Attempt 4: Caddy in front, no intermediate proxy
+
+Same as Attempt 1, using Caddy instead of Traefik.
+Easier config than Traefik.
+
+See [attempt-04/Readme.md](attempt-04/Readme.md).
+
 ## Clean up
 
 <kbd>Ctrl</kbd>+<kbd>c</kbd> will stop the containers.
@@ -97,7 +104,7 @@ ping adammonsen.com
 <dd>I don’t know. Maybe that’ll work as-is, or with a few more lines of Nginx config?
 </dd>
 <dt>What about HTTPS?</dt>
-<dd>I was assuming Traefik would terminate HTTPS traffic, so Nginx and the isolated service shouldn’t need to handle that.
+<dd>In a for-reals homelab/homeprod, <code>main-rproxy</code> would terminate HTTPS traffic, so Nginx (if used) and the isolated service shouldn’t need to handle it directly.
 </dd>
 <dt>How do I get real client IP addresses with multiple reverse proxies?</dt>
 <dd>I don’t know. Should be doable with the right headers.
