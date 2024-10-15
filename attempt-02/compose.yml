@@ -32,7 +32,6 @@ services:
   # untrusted service we are isolating
   whoami:
     image: traefik/whoami
-    user: 1000:1000
     networks:
       - private
 

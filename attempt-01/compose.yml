@@ -15,14 +15,12 @@ services:
   # untrusted service we are isolating
   whoami:
     image: traefik/whoami
-    user: 1000:1000
     networks:
       - private
 
   # companion/sidecar to the untrusted service
   jailed-worker:
     image: nicolaka/netshoot
-    user: 1000:1000
     command: sleep 6000
     networks:
       - private
