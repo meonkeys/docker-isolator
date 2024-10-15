@@ -67,6 +67,8 @@ ping adammonsen.com
 
 ## See also
 
+* [reddit post about this repo on reddit r/selfhosted](https://www.reddit.com/r/selfhosted/comments/1g3rxaf/network_isolate_reverseproxied_container/)
+* [hacker news post about this repo](https://news.ycombinator.com/item?id=41848083)
 * [filter outbound container network traffic : r/selfhosted](https://www.reddit.com/r/selfhosted/comments/1f5vqqn/filter_outbound_container_network_traffic/)
 * [Restrict Internet Access - Docker Container - Stack Overflow](https://stackoverflow.com/questions/39913757/restrict-internet-access-docker-container)
 * [Preventing egress / outbound traffic from container, except via sidecar gateway/proxy - Nomad - HashiCorp Discuss](https://discuss.hashicorp.com/t/preventing-egress-outbound-traffic-from-container-except-via-sidecar-gateway-proxy/56488)
