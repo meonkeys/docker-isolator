@@ -1,3 +1,0 @@
-whoami.docker.localhost:80 {
-    reverse_proxy whoami:80
-}

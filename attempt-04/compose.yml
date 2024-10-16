@@ -1,13 +1,12 @@
 services:
   main-rproxy:
     image: caddy:2
+    command: caddy reverse-proxy --from whoami.docker.localhost:80 --to whoami:80
     ports:
       - 80:80
     networks:
       - web
       - private
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
 
   whoami:
     image: traefik/whoami
